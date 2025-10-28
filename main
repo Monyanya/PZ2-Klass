@@ -1,0 +1,70 @@
+#include <iostream>
+#include <windows.h>
+#include "DynamicArray.h"
+
+using namespace std;
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+
+    cout << "=== Тест ЗАДАНИЕ 1: Конструктор и вывод ===" << endl;
+    DynamicArray arr1(5);
+    arr1.setValue(0, 10);
+    arr1.setValue(1, -20);
+    arr1.setValue(2, 50);
+    arr1.print();
+    cout << "arr1[1] = " << arr1.getValue(1) << endl;
+    arr1.setValue(10, 15);   // ошибка
+    arr1.setValue(2, 150);   // ошибка
+
+    cout << "\n=== Тест ЗАДАНИЕ 2: Конструктор копирования ===" << endl;
+    DynamicArray arr2(3);
+    arr2.setValue(0, 5);
+    arr2.setValue(1, 15);
+    arr2.setValue(2, 25);
+    cout << "Исходный массив: ";
+    arr2.print();
+    DynamicArray arr2Copy = arr2; // копирование
+    cout << "Копия массива: ";
+    arr2Copy.print();
+    arr2.setValue(1, 99);
+    cout << "После изменения исходного массива:" << endl;
+    cout << "arr2: "; arr2.print();
+    cout << "arr2Copy: "; arr2Copy.print();
+
+    cout << "\n=== Тест ЗАДАНИЕ 3: Добавление значения в конец ===" << endl;
+    DynamicArray arr3(3);
+    arr3.setValue(0, 10);
+    arr3.setValue(1, 20);
+    arr3.setValue(2, 30);
+    cout << "Исходный массив: ";
+    arr3.print();
+    arr3.addValue(40);
+    cout << "После добавления 40: ";
+    arr3.print();
+    arr3.addValue(150); // ошибка
+
+    cout << "\n=== Тест ЗАДАНИЕ 4: Сложение и вычитание массивов ===" << endl;
+    DynamicArray a(3);
+    a.setValue(0, 10);
+    a.setValue(1, 20);
+    a.setValue(2, 30);
+
+    DynamicArray b(5);
+    b.setValue(0, 1);
+    b.setValue(1, 2);
+    b.setValue(2, 3);
+    b.setValue(3, 4);
+    b.setValue(4, 5);
+
+    cout << "A: "; a.print();
+    cout << "B: "; b.print();
+
+    DynamicArray sum = a.add(b);
+    cout << "A + B: "; sum.print();
+
+    DynamicArray diff = a.subtract(b);
+    cout << "A - B: "; diff.print();
+
+    return 0;
+}
